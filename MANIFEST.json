@@ -1,0 +1,11 @@
+{
+  "version": "2.2",
+  "source_commit": "b35102bf57d3ac1c2494b53d2e2841ab578dcccb",
+  "kind": "public_read_only_reference",
+  "files": {
+    "VERSION": "8bbe6cf74a1e8921c055acf3636ec856e392645b",
+    "CORE.md": "fe77c158ebe580932e59bb7e60448bd79ad5cf62",
+    "AGENTS.md": "c740605ef50adba066cb3385cabac843706d3feb",
+    "CHANGELOG.md": "04a5547693a0ad5db829c64232e4531db47dc1b4"
+  }
+}
