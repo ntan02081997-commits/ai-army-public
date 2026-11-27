@@ -1,0 +1,264 @@
+{
+  "schema": 1,
+  "name": "AnSpace Knowledge Graph — Public Preview",
+  "status": "PREVIEW_NOT_RELEASED",
+  "method": "MANUAL_DOCUMENT_INDEX_NOT_GRAPHIFY_OUTPUT",
+  "source_public": "6c255388b1fce5720f7acb57880a4a30a4171642",
+  "groups": [
+    "Core",
+    "Skills",
+    "Lessons",
+    "Instincts",
+    "Research",
+    "Projects"
+  ],
+  "authority": false,
+  "automatic_activation": false,
+  "nodes": [
+    {
+      "id": "P-CORE",
+      "group": "Core",
+      "title": "Core 2.2 — bản chụp lịch sử",
+      "tags": [
+        "core",
+        "governance"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Public snapshot version 2.2, not current private HEAD or authority.",
+      "sources": [
+        {
+          "path": "VERSION",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "8bbe6cf74a1e8921c055acf3636ec856e392645b",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/VERSION"
+        },
+        {
+          "path": "CORE.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "fe77c158ebe580932e59bb7e60448bd79ad5cf62",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/CORE.md"
+        },
+        {
+          "path": "AGENTS.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "c740605ef50adba066cb3385cabac843706d3feb",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/AGENTS.md"
+        },
+        {
+          "path": "CHANGELOG.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "04a5547693a0ad5db829c64232e4531db47dc1b4",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/CHANGELOG.md"
+        },
+        {
+          "path": "MANIFEST.json",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "f30e8782e4e471f5f704c962385a4d9315508f31",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/MANIFEST.json"
+        }
+      ]
+    },
+    {
+      "id": "P-GOV",
+      "group": "Core",
+      "title": "Hồ sơ kiểm định Governance 3.1",
+      "tags": [
+        "governance",
+        "release",
+        "authority"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Sanitized historical audit snapshot, not current release proof.",
+      "sources": [
+        {
+          "path": "audits/FINAL-31-001-b2efe20.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "4e11b1d8de53310f3e8cfb114fe0e8786e3224ec",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-31-001-b2efe20.txt"
+        }
+      ]
+    },
+    {
+      "id": "P-LEARN",
+      "group": "Skills",
+      "title": "Hồ sơ Học hỏi và Tiến hóa 1.1",
+      "tags": [
+        "learning",
+        "skills"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Read historical scope and limits; do not infer current private rule.",
+      "sources": [
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/README.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "b1f133c545834fa6820d8017db381b23d607fbb8",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/README.md"
+        },
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/02-learning-skill.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "e8d3ab5684c75b8b5045f510eb0c10d987a61f67",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/02-learning-skill.txt"
+        },
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/05-acceptance.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "48b6b74740668c1b15f088bab198993f918855eb",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/05-acceptance.txt"
+        }
+      ]
+    },
+    {
+      "id": "P-HANDOFF",
+      "group": "Skills",
+      "title": "Tối ưu token và bàn giao",
+      "tags": [
+        "tokens",
+        "handoff",
+        "tests"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Synthetic reference not security/authentication evidence.",
+      "sources": [
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/03-optimizer-handoff.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "06eb68a85a8a154661529521d22b39a30d7daa8f",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/03-optimizer-handoff.txt"
+        },
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/04-reference.js",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "ef7ea87b450346ea9c0de082c12aa1ae7c74b739",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/04-reference.js"
+        }
+      ]
+    },
+    {
+      "id": "P-LESSONS",
+      "group": "Lessons",
+      "title": "Bài học đã chia sẻ",
+      "tags": [
+        "lessons",
+        "failure",
+        "tests"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Sanitized historical records, not proof of independent source verification.",
+      "sources": [
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/06-knowledge.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "b0c9359f06517b9208feebf33877e69fdfe3aae3",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/06-knowledge.txt"
+        }
+      ]
+    },
+    {
+      "id": "P-RESEARCH",
+      "group": "Research",
+      "title": "Sổ nguồn đã chia sẻ",
+      "tags": [
+        "research",
+        "github",
+        "media"
+      ],
+      "status": "PUBLIC_HISTORICAL_REFERENCE",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Read limits, PARTIAL_READ, no new installation or upstream audit.",
+      "sources": [
+        {
+          "path": "audits/FINAL-LEARN-001-6c662e3/06-knowledge.txt",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "b0c9359f06517b9208feebf33877e69fdfe3aae3",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/FINAL-LEARN-001-6c662e3/06-knowledge.txt"
+        }
+      ]
+    },
+    {
+      "id": "P-EVO-AUDIT",
+      "group": "Instincts",
+      "title": "Hồ sơ kiểm định 2.0 — lịch sử, không hoạt động",
+      "tags": [
+        "instincts",
+        "evaluator",
+        "audit"
+      ],
+      "status": "AUDIT_ONLY_HISTORICAL",
+      "scope": "PUBLIC_ONLY",
+      "limit": "Old candidate audit only. No learning or acting as released rule; read only for authorized historical audit.",
+      "sources": [
+        {
+          "path": "audits/EVO-FINAL-001-29c6693/01-sources.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "e149aca1d34fc970924c40fca67fc93086ad5c73",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/EVO-FINAL-001-29c6693/01-sources.md"
+        },
+        {
+          "path": "audits/EVO-FINAL-001-29c6693/02-rules-and-qa.md",
+          "ref": "6c255388b1fce5720f7acb57880a4a30a4171642",
+          "blob": "8a831d3f8a213719a1de6cf2b905d8b31d59ca49",
+          "url": "https://raw.githubusercontent.com/ntan02081997-commits/ai-army-public/6c255388b1fce5720f7acb57880a4a30a4171642/audits/EVO-FINAL-001-29c6693/02-rules-and-qa.md"
+        }
+      ]
+    },
+    {
+      "id": "P-PROJECTS",
+      "group": "Projects",
+      "title": "Dữ liệu riêng dự án",
+      "tags": [
+        "project",
+        "scope"
+      ],
+      "status": "HOLD_SOURCE_REQUIRED",
+      "scope": "PUBLIC_ONLY",
+      "limit": "No project source supplied; no inference or private access.",
+      "sources": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "P-CORE",
+      "to": "P-GOV",
+      "type": "historical_governance",
+      "provenance": "MANUAL_NAVIGATION"
+    },
+    {
+      "from": "P-GOV",
+      "to": "P-LEARN",
+      "type": "related_audit",
+      "provenance": "MANUAL_NAVIGATION"
+    },
+    {
+      "from": "P-LEARN",
+      "to": "P-HANDOFF",
+      "type": "related_snapshot",
+      "provenance": "MANUAL_NAVIGATION"
+    },
+    {
+      "from": "P-LEARN",
+      "to": "P-LESSONS",
+      "type": "related_lessons",
+      "provenance": "MANUAL_NAVIGATION"
+    },
+    {
+      "from": "P-LESSONS",
+      "to": "P-RESEARCH",
+      "type": "shared_source",
+      "provenance": "MANUAL_NAVIGATION"
+    },
+    {
+      "from": "P-LEARN",
+      "to": "P-EVO-AUDIT",
+      "type": "historical_candidate_successor",
+      "provenance": "MANUAL_NAVIGATION"
+    }
+  ],
+  "limits": "All entries are already-public historical references or explicit placeholders. No private content or new private source projection. Public catalog is not current Core or a task queue."
+}
