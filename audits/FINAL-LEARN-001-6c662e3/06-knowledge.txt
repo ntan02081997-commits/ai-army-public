@@ -1,0 +1,66 @@
+PART 6 — source-register projections and lessons, candidate 6c662e3d5810a6be8d95cb4e536caaf2c467c495. Original private blobs: knowledge/LESSONS.md bd3de8136832aa67296fa9680443265405406e1b; knowledge/GITHUB-LEARNING-REGISTER.md 1a261099b3e5e083cd1cbfec25ef6de480fc4236; knowledge/LEARNING-REGISTER-2026-11-27.md d9b2b990f9bdb5e2fed4b83654727472521ce139. Projections not byte-identical.
+
+# Sổ bài học — candidate Learning & Evolution
+Nguồn baseline 459f53b60f7e0728103ae129c46b15ba4d8ccddc. Sáu bản ghi: hai sự cố PR4, một giới hạn mô phỏng PR4, hai quan sát mã nguồn upstream và một phát hiện QA PR5; các kết quả thử upstream chưa tái lập. Chưa tự cài skill vào các môi trường.
+
+| Mã | Dấu hiệu và nguyên nhân | Sửa / ca hồi quy / bằng chứng | Quy tắc áp dụng lại |
+|---|---|---|---|
+| LESSON-001 | QA HOLD B04/H12: revoke kiểm tra fence trước khi cập nhật hết lease, xác nhận cũ nhả slot/retry tại đúng mốc hết hạn. | Sửa thứ tự expiry trước fence; E01–E02 thêm vào D01–D21; QA rev2 #7209836012, CTO #7209918735, QA rev3 #7209966164, stdout #7210070213, candidate b2efe207763c6df11897b5765b9042c112101dd1, release 459f53b60f7e0728103ae129c46b15ba4d8ccddc. | Khi điều kiện có thể đổi tại biên, kiểm tra sau cập nhật trạng thái; thêm ca equality trực tiếp, stale ACK/retry và kiểm thử độc lập. Mô phỏng không chứng minh runtime atomic. |
+| LESSON-002 | Claude BLOCKED vì private repo không xác thực; hồ sơ công khai dài bị cắt trước Phần G. | Owner duyệt snapshot đã ẩn định danh, public commit fe6f0b4b5667526ec7d91c4b39105092ffd02aec; QA stdout riêng #7210070213, Director receipt #7210171424, Claude user-forwarded FINAL_PASS chỉ B. | Xác minh quyền và khả năng đọc trước bàn giao; tách bằng chứng thiết yếu thành phần nhỏ nếu được phép; phân biệt snapshot với HEAD độc lập. Không công khai dữ liệu riêng hoặc bỏ cổng. |
+| LESSON-003 | Số liệu 23/23 chỉ là mô phỏng; P2 step không gắn reservation trong reference. | Claude user-forwarded F3, Director receipt #7210171424, release #7210201796. | Mức C vẫn khóa cho tới adapter atomic và test runtime. Không suy diễn năng lực từ mô hình offline. |
+
+| LESSON-004 | Promptfoo equals với object: JSON.parse lỗi và inverse=true khiến phép phủ định đạt; đây là ngữ nghĩa phép so sánh, không phải kiểm schema. | Pin aa4e2c6baa89f616bb361459a0410f330e16f7c7 src/assertions/equals.ts blob 259491c419cc77e3682e43c130866ebe9e8d6970; Director receipt #7210725906, 7/7 chỉ reported. | Validate cú pháp/schema trước phép so sánh; hồi quy malformed/thiếu trường/phủ định. |
+| LESSON-005 | Agents SDK remove_all_tools bỏ structured items nhưng giữ string history và non-tool message; không khử dữ liệu đã chép vào text thường. | Pin 0ad2d63a9371a23333a95ea6878141a826c9cdda src/agents/extensions/handoff_filters.py blob 745a5ddaa3b70340747a1fe16df61a5fc5392988; receipt #7210725906, 5/5 chỉ reported. | Bản chiếu allowlist + review nội dung/quyền, thử canary text và cấu trúc; không tự nhận bộ lọc bảo mật. |
+
+| LESSON-006 | QA PR5 EVO06/EVO10 HOLD: QE08 cặp bản bàn giao và bản duyệt cũ cùng SHA vẫn được chấp nhận do thiếu đối chiếu revision/phê duyệt hiện hành. | QA #7210837800 tại 683a06f09c85da33a5d21ca2d2260fc9aa6fa3b7; sửa quy tắc thủ công và reference LR23–LR40, author 40/40 theo kỳ vọng, chờ QA. | Nguồn SHA không đủ chứng minh hiệu lực phê duyệt; đọc bản ghi hiện hành độc lập, ràng buộc recipient/scope/revision/evidence/approval/payload; đánh dấu bản thay thế và phụ thuộc, rollback không hồi sinh phê duyệt cũ. LR22/LR40 là giới hạn mô phỏng. |
+
+Ghi bài học mới: id, task, source SHA, UTC, symptom, cause/evidence hoặc hypothesis, mitigation, test, expected/actual, scope, owner, status, next. Không ghi bí mật, Gmail hoặc dữ liệu người dùng không cần thiết. Không ghi bài học chưa xác minh là sự thật.
+
+
+GitHub register: 25 ID rows. Metadata licenses not clearance. No historic private image names or user conversation content.
+25 đầu mục: 11 từ ảnh + 9 lịch sử + 5 nguồn mới. Agent Skills đã có NEW-G01, không nhân đôi. NEW-G04 pin aa4e2c6baa89f616bb361459a0410f330e16f7c7, LICENSE blob af3fa111d9303b3041d225fb851534e50a4bbec2, src/assertions/equals.ts blob 259491c419cc77e3682e43c130866ebe9e8d6970 (JSON lỗi có thể đạt inverse). NEW-G05 pin 0ad2d63a9371a23333a95ea6878141a826c9cdda, LICENSE blob e5ad2c5aa30343f143a5c418004ca1a8d2cfaff4, src/agents/extensions/handoff_filters.py blob 745a5ddaa3b70340747a1fe16df61a5fc5392988 (bỏ tool items, không khử text thường). Director đọc trực tiếp tại pin. Owner-forwarded 7/7 Echo/equals và 5/5 remove_all_tools: REPORTED, chưa có log/fixture/môi trường độc lập; không cộng vào bộ kiểm thử local. Xem PR5 #7210550821, #7210725906. Phụ thuộc, cảnh báo bảo mật theo phiên bản, chi phí vận hành và token savings chưa xác minh; tích hợp upstream HOLD, chỉ đề xuất phương pháp local không dependency. Hai nguồn ở mức PARTIAL_READ, ứng dụng DESIGN_ONLY cho hợp đồng candidate cho tới nghiệm thu.
+
+| ID | public upstream reference | subject | metadata/license | disposition |
+|---|---|---|---|---|
+| IMG-G01 | https://github.com/morluto/rea | Authorized analysis of own software, debugging methodology | MIT | Low priority; no third-party reverse engineering without authorization |
+| IMG-G02 | https://github.com/yrui-cmd/cell_su7 | Editable vector diagrams/PowerPoint | MIT | Research service credits and output rights; no paid backend |
+| IMG-G03 | https://github.com/hugohe3/ppt-master | Native editable slides, template fidelity | MIT | High education value; later KHBD/slide workflow, not new module now |
+| IMG-G04 | https://github.com/Kianzzz/xilo-opus-video | Storyboard/preview approval and code-rendered video | MIT | Learn workflow; no model/provider assumption |
+| IMG-G05 | https://github.com/lemomo-ai/lemo-opuscar | Film style library and code-based rendering | NOASSERTION | Study methods only; verify license/assets before reuse |
+| IMG-G06 | https://github.com/Vincentwei1021/mg-styles-15 | Motion graphics styles and source examples | MIT | Learn design principles; later Studio |
+| IMG-G07 | https://github.com/chuspeeism/dashi-animationstyle | Knowledge narration animation | NOASSERTION | Study methods only; verify license/assets |
+| IMG-G08 | https://github.com/alchaincyf/huashu-art-motion | Artistic animation and explanation grammar | MIT | Later Studio; check asset rights |
+| IMG-G09 | https://github.com/WaterDJiang/Wattter_openSkills | Skill collection/code-based motion ideas (image description) | UNKNOWN | Verify actual scope and license; no copying |
+| IMG-G10 | https://github.com/Vincentwei1021/video-shotcraft | Shot design, motion, beat synchronization | Apache-2.0 | Study later Studio; dependencies/license/cost not reviewed |
+| IMG-G11 | https://github.com/solplum/anything2video | Text to storyboard and timeline rendering | MIT | Learn architecture; do not assume zero provider cost |
+| HIST-G01 | Video Agent Skills — https://github.com/Melvynx/video-agent-skills | Short-video script, research, editing/subtitles | MIT | Research methods; no install |
+| HIST-G02 | Motion Canvas — https://github.com/motion-canvas/motion-canvas | Timeline, motion, timing/audio | MIT | Later Studio; read examples |
+| HIST-G03 | Remotion — https://github.com/remotion-dev/remotion | React video editing, color, audio, portrait | NOASSERTION | Conditional: verify current licensing and commercial-use eligibility; no cost assumption |
+| HIST-G04 | ChemDoodle Web Components — https://web.chemdoodle.com/ and https://web.chemdoodle.com/installation/license ; possible GitHub mirror https://github.com/aeris-data/ChemDoodle | Molecular/atomic visualization | UNKNOWN for mirror | Original GitHub identity unresolved; use official site, check license implications; no reuse yet |
+| HIST-G05 | Cisco Skill Scanner — https://github.com/cisco-ai-defense/skill-scanner | Static skill risk detection, independent security tests | NOASSERTION | Priority P1, read docs and inspect license/static-only path; no install/provider |
+| HIST-G06 | OpenAI Plugin Eval — https://github.com/openai/plugins/tree/main/plugins/plugin-eval | Skill/plugin evaluation and rewrite briefs | UNKNOWN at repo level | Priority P1, learn metrics and test design; evaluate model/quota requirements, no invocation |
+| HIST-G07 | RDKit — https://github.com/rdkit/rdkit | Molecular structure, validation | BSD-3-Clause | Later KHBD/Chem; check environment |
+| HIST-G08 | OTIO — https://github.com/AcademySoftwareFoundation/OpenTimelineIO | Editorial timeline interchange | Apache-2.0 | Later Studio |
+| HIST-G09 | Treg — historical reference; possible current match https://github.com/superdesigndev/treg | Trust/security approach to tools | NOASSERTION | Historical identity not confirmed; DEFERRED: prior owner decision excluded paid Treg; study concepts only, no signup/payment |
+| NEW-G01 | https://github.com/agentskills/agentskills | Skill format and progressive disclosure; validate portability, no automatic install | Apache-2.0 | Priority P1 reference; nạp tùy chọn theo nhu cầu, không thay đọc Core bắt buộc; không tạo mục trùng |
+| NEW-G02 | https://github.com/gitleaks/gitleaks | Local secret scan methodology and false positives; no actual scan of private data yet | MIT | Priority P1 reference |
+| NEW-G03 | https://github.com/microsoft/playwright | Browser regression and repeatable evidence; overlaps V10 topic | Apache-2.0 | P2; reuse existing tooling only if approved, no browser download |
+| NEW-G04 | https://github.com/promptfoo/promptfoo | Kiểm thử xác định, validate trước phép phủ định | MIT tại pin 0.126.0 | Học phương pháp, không cài |
+| NEW-G05 | https://github.com/openai/openai-agents-python | Bản chiếu bàn giao tối thiểu và bảo toàn chứng cứ | MIT tại pin v0.26.0 | Học phương pháp, không cài |
+
+Video register: 10 videos all PARTIAL_READ, 60 sampled frames, 0/10 speech verified. Media filenames, timestamps of uploads, original PTS list and private pilot identifiers omitted. QA CSV independent comparison NOT_RUN. V01/V03 corrected and V02/V04 distinct. 95%, +60%, 63→20 not measured AI Army results. V09 NOT_MAPPED for pipeline. Full source acceptance HOLD, scoped method only. Original provenance incomplete.
+
+| ID | Omitted media identifier | Observed topic | Scope/status |
+|---|---|---|---|
+| V01 | [original media identifier omitted] | Công ty AI một người, vai/skill/plugin riêng, bộ nhớ riêng, agent teams | PARTIAL: 5 vai chính đã duyệt và bàn giao Core; bộ nhớ riêng/chung có thiết kế, chưa nghiệm thu từng môi trường và sổ bài học. |
+| V02 | [original media identifier omitted] | Dây chuyền Planner–Coder–Tester–Reviewer, thư mục bàn giao, /ship, người duyệt | DEMONSTRATED cho PR4: Director–CTO–QA–Claude–Owner; handoff có bằng chứng. Command /ship tương đương một lệnh chưa có, không tự gọi AI. |
+| V03 | [original media identifier omitted] | Cue, team leader, nhóm chat và tài liệu markdown bàn giao | PARTIAL: HUB-001/PR có tài liệu và báo cáo; không có chat chung realtime, không có Cue đã cài. |
+| V04 | [original media identifier omitted] | Architect–Coder–Reviewer–Tester, kiểm thử, feedback về Coder | DEMONSTRATED phạm vi PR4: QA độc lập, HOLD/sửa/retest; chưa tự động. Quảng cáo triệt tiêu 95% lỗi không kiểm chứng. |
+| V05 | [original media identifier omitted] | Agentes Chat; kênh chung, trạm thực thi, thẻ chờ duyệt, tách chi phí phần mềm/model | PARTIAL: HUB chung, approval, giới hạn chi phí; trạm thực thi/chat realtime chưa có. Không cài self-host Docker/Postgres hay cloud; giá trong video chưa xác minh. |
+| V06 | [original media identifier omitted] | Everything Claude Code (ECC), repo bộ công cụ, agent, MCP, thích nghi theo sử dụng | PARTIAL: skill riêng, optimizer, checkpoint. Chưa đối chiếu repo ECC đầy đủ, cơ chế học kinh nghiệm chưa có trước candidate này; không cài MCP/hook. |
+| V07 | [original media identifier omitted] | Harness / revfactory/harness, team architecture factory, sinh skill, điều phối, dry-run | PARTIAL: đội 5 vai và skill thiết kế thủ công, QA/dry-run reference; chưa có factory tạo đội/skill theo nhiệm vụ. Số +60% do video nêu chưa kiểm chứng. |
+| V08 | [original media identifier omitted] | Claude Code gọi terminal, agy, chia việc, openai/codex-plugin-cc | DESIGN_ONLY: điều phối thủ công, Auto Dispatch thiết kế; kết nối thực giữa Claude/Antigravity/Codex chưa xác minh; Mức C khóa. Không tự cài. |
+| V09 | [original media identifier omitted] | Hướng dẫn edit video tự động với Claude; CapCut, Higgsfield, hình ảnh phong cách | NOT_MAPPED về pipeline: đã khôi phục hai MP4 và kiểm tra metadata, mẫu khung hình; chưa chứng minh quan hệ với V09, quy trình, chất lượng lời thoại hoặc chi phí. Chưa mở Studio module mới trước Army. |
+| V10 | [original media identifier omitted] | Caveman nén lời, mẫu giao diện Botanic Architecture, Playwright Python, GSAP Showcase, workflow video | PARTIAL: Token Optimizer 1.1 có rút gọn và bảo toàn gates nhưng chưa benchmark Caveman; không xác nhận tỷ lệ token trong video; Playwright/GSAP và UI/Studio chưa có quy trình nghiệm thu chung. Cần đọc thêm để xác định đầy đủ tên công cụ trong video. |
+
+Research expansion DEFERRED, no repeat of original study, no install/semantic extraction.
