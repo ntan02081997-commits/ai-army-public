@@ -1,0 +1,48 @@
+PART 7 — QA evidence, coordinator_forwarded_snapshot from private QA comments; identities and private URLs removed. Director verified QA account distinct from author, user_attested for B only.
+
+## QA-LEARN-001 rev. 3 · DESIGN_READY_FOR_FINAL
+
+**AS-AI-02 · mức B `user_attested`** theo xác nhận UI cho cùng phiên Work, [QA workspace/project redacted]. GitHub `[QA GitHub identity redacted]` có quyền đọc, khác tác giả commit. Candidate/HEAD `6c662e3d5810a6be8d95cb4e536caaf2c467c495`, Core 2.3/main `459f53b60f7e0728103ae129c46b15ba4d8ccddc`. PR #5 vẫn draft. SHA-1 của cả **8/8 Git blob** khớp handoff. [private reference omitted] có một commit và đúng bốn tệp tài liệu. Reference, handoff, Optimizer và LESSONS không đổi từ rev. 2.
+
+| Kiểm định | Kết quả | Kỳ vọng → quan sát |
+|---|---|---|
+| EVO06 | PASS thiết kế và mô phỏng | Cặp cũ cùng SHA phải bị chặn → QE08 trả `BLOCKED`, payload null khi bản ghi hiện hành đã sang revision 2. Bản mới duyệt đúng trả `REVIEWED_PROJECTION`. Sai project bị chặn. Mẫu buộc đọc bản hiện hành độc lập trước gửi và nhận/tiếp tục, ràng buộc đúng bản chiếu, revision, người nhận/phạm vi, nguồn và ID duyệt/bằng chứng. [private reference omitted] · [private reference omitted] |
+| EVO10 | PASS thiết kế và mô phỏng | Bản cũ mất hiệu lực, giữ lịch sử và kiểm lại phụ thuộc → quy định `SUPERSEDED/REVOKED`, người/lý do/thời điểm, liên kết bản mới, dừng phụ thuộc và rollback bằng revision/phê duyệt mới. Bằng chứng đã thay thế bị `BLOCKED` dù revision vẫn khớp. [private reference omitted] · [private reference omitted] |
+| A · Dùng lại tri thức đã kiểm chứng | PASS tĩnh | Bản ghi đúng nguồn, phạm vi và phiên bản được dùng lại → một chủ nhiệm, tra chỉ mục trước, nạp đúng phần đã kiểm chứng. [private reference omitted] |
+| B · Nguồn chưa đủ | PASS tĩnh | Giữ phạm vi và chặn quyết định thiếu bằng chứng trọng yếu → `PARTIAL_READ` chỉ dùng phần có chứng cứ, V09 pipeline vẫn `NOT_MAPPED`, phạm vi phụ thuộc bị HOLD khi thiếu bằng chứng quyết định. [private reference omitted] · [private reference omitted] |
+| C · Thay đổi/thu hồi | PASS tĩnh | Kiểm tra lại đúng phần liên quan và xác minh phụ thuộc → revision/phê duyệt cũ mất hiệu lực, nguồn sai lệch chỉ mở lại theo lý do và phạm vi cụ thể. [private reference omitted] |
+| D · Core và cổng độc lập | PASS tĩnh | Giữ đọc Core, quyền, SHA, hồi quy và QA/Claude/Owner → kiểm tra trực tiếp ở Core 2.3, quy tắc dùng lại và ma trận rev. 3. [private reference omitted] · [private reference omitted] |
+| E · Chỉ mục theo vai | PASS tĩnh | Trỏ sổ hiện có và giữ quyền → 20 mã được kiểm tra đều phân giải trong 25 đầu mục GitHub, 10 video và 6 LESSON. Chỉ mục phân vai, không thêm quyền, module hay trạng thái cài đặt. [private reference omitted] |
+
+**Hồi quy độc lập:** LR01–LR40 **40/40** đúng kỳ vọng trên Git blob `ef7ea87b450346ea9c0de082c12aa1ae7c74b739`. Một tiến trình Node VM offline, context tổng hợp, không dependency ngoài. LR22/LR40 là hai ca xác nhận giới hạn khi dữ liệu đầu vào được gắn nhãn đáng tin sai, không phải bằng chứng ACL/redaction. Kết quả các ca trọng tâm:
+
+```text
+QE08 old pair same SHA/current revision 2 expected=BLOCKED observed=BLOCKED payloadNull=true
+QE08 control new approved pair expected=REVIEWED_PROJECTION observed=REVIEWED_PROJECTION payloadNull=false
+Retired evidence with matching revision expected=BLOCKED observed=BLOCKED payloadNull=true
+Wrong destination project expected=BLOCKED observed=BLOCKED payloadNull=true
+Node v24.22.3 offline 2026-11-27T05:49:31.308Z
+```
+
+Đã đối chiếu các mục EVO01–EVO05 và EVO07–EVO09 với [private reference omitted] và diff hiện hành. Các kết luận thiết kế còn hiệu lực. Giữ 60 giá trị PTS theo cấu trúc sổ, đối chiếu trực tiếp CSV gốc `NOT_RUN`. Giữ nguyên `PARTIAL_READ` cho cả 10 video, 0/10 lời thoại và HOLD nghiệm thu toàn nguồn/tích hợp upstream. Không lặp rà media hay nghiên cứu upstream. ACL/redaction thực, runtime, Graphify và số đo token vẫn `NOT_RUN` hoặc HOLD theo phạm vi.
+
+**DESIGN_READY_FOR_FINAL** chỉ cho phương pháp thủ công mức B tại SHA trên. Claude kiểm định cuối trên cùng SHA, sau đó Chủ sở hữu quyết định riêng về phát hành/merge. Chi phí phát sinh 0.
+
+Initial QA selected findings (historical HOLD):
+| EVO01 | PASS | Nguồn chưa đủ không ghi READ → 10/10 video ghi PARTIAL_READ, lời thoại 0/10, nguồn upstream được khoanh phạm vi. [private reference omitted] · [private reference omitted] |
+| EVO02 | Quy tắc PASS · xác minh PTS gốc NOT_RUN | Ghi phạm vi và backlog → đủ 25 mã và đích GitHub riêng, V01/V03 tách đúng theo receipt, V02/V04 khác thứ tự; 60 giá trị PTS, 6/video, đều tăng. QA chưa đọc được FRAME-MAPPING.csv v0.3, nên đối chiếu từng giá trị với CSV gốc chưa thực hiện. [private reference omitted] · [private reference omitted] |
+| EVO06 | **FAIL thiết kế · Cao** | Bản bàn giao phải giữ đúng quyền, người nhận và bằng chứng hiện hành → mẫu yêu cầu review/kiểm ACL nhưng chưa chỉ rõ cách chứng minh nội dung được duyệt thuộc đúng task/revision, người nhận và phiên bản bằng chứng được chuyển. QE03 từ chối cặp khác revision; QE08 chấp nhận hai bản cùng revision cũ khi chỉ tái dùng context đã duyệt và SHA vẫn khớp. Đây là giới hạn của reference tổng hợp, không phải kết quả kiểm định ACL thực. [private reference omitted] · [private reference omitted] |
+| EVO10 | **FAIL thiết kế · Vừa** | Sửa sai/nguồn stale/rollback giữ lịch sử và ngăn dùng lại bằng chứng cũ → có bản ghi mới, gộp trùng theo hash và nêu rollback, nhưng chưa quy định cách đánh dấu bản bị thay thế và xử lý các handoff/bằng chứng phụ thuộc đang chờ. QE08 xác nhận nguồn SHA không đủ phân biệt revision. [private reference omitted] · [private reference omitted] |
+Node v24.22.3, một tiến trình offline, reference được nạp từ blob cố định qua Node VM không có loader, mạng hay dependency ngoài. Đã xác minh Git blob trước khi chạy. **LR01–LR22 22/22**; LR22 chủ ý chứng minh review không khử dữ liệu sẽ không được nhận diện. **QE01–QE07 7/7**; QE08 ghi giới hạn. 
+QE01 malformed expected under inverse expected=false observed=false PASS
+QE02 nested evidence expected="BLOCKED" observed="BLOCKED" PASS
+QE03 old revision vs current review expected="BLOCKED" observed="BLOCKED" PASS
+QE04 paired continuation: eight fields expected=true observed=true PASS
+QE05 lost final gate expected="BLOCKED" observed="BLOCKED" PASS
+QE06 altered evidence with same SHA expected="BLOCKED" observed="BLOCKED" PASS
+QE07 non-boolean approval expected="BLOCKED" observed="BLOCKED" PASS
+QE08 old revision + matching old review, same source SHA expected="BLOCKED" observed="REVIEWED_PROJECTION" LIMITATION
+Node v24.22.3 blob df9dfcd0e9fe6e8b4843b2de32460626a8a20b49 2026-11-27T05:39:20.852Z
+**HOLD.** Đề nghị quy trình thủ công ghi xác nhận duyệt gắn với mã nhiệm vụ/revision đang hiệu lực, người nhận/phạm vi, nguồn và bản chiếu cụ thể, rồi đối chiếu trước chuyển và tiếp tục. Khi sai lệch hoặc nguồn bị thay thế, dừng, đánh dấu bản cũ và các bằng chứng phụ thuộc cần xác minh lại, giữ lịch sử. Bổ sung ca cặp cũ cùng SHA, và cung cấp CSV hoặc bản đối chiếu PTS có thể kiểm tra. Runtime, ACL/redaction thực, đủ nội dung nguồn, advisory/dependency và tiết kiệm token thực vẫn `NOT_RUN` hoặc HOLD. Claude chờ QA đạt tại SHA đã sửa và Chủ sở hữu quyết định riêng. Chi phí phát sinh 0.
+
+Latest report has key results and 40/40 count, not full raw stdout for all 40 tests. LR22/LR40 limitation demonstrations. No Director rerun claimed. Reviewer may run standalone Part 4 if existing Node available. No runtime or ACL/redaction proof.
