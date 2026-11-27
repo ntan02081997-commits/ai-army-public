@@ -1,0 +1,67 @@
+SOURCE: governance/ACCEPTANCE-LEARNING-1.1.md
+Original Git blob 6ccba9cf40aa24c37c5c841519188cb00e44fe0b
+
+# Acceptance — Learning & Evolution 1.1 / Token Optimizer 1.2 candidate
+User authorized consolidation of PR5 only. Core official 2.3 / Governance 3.1 main 459f53b60f7e0728103ae129c46b15ba4d8ccddc unchanged. No runtime, install, merge, new cost or Level C. Candidate is not official. Reference Git blob hiện hành ef7ea87b450346ea9c0de082c12aa1ae7c74b739. Blob lịch sử rev.1 df9dfcd0e9fe6e8b4843b2de32460626a8a20b49.
+## Gates
+EVO01–EVO10 in learning skill remain mandatory; QA independent, Claude final, owner approval exact final SHA. Distinguish source/content evidence from application evidence; 10 videos PARTIAL_READ, 0/10 speech verified; source review HOLD remains backlog, not a release of the source claims. Source pin/README/license evidence alone does not prove full dependency security or operation. Learning method may be reviewed separately in manual B, not upstream integration. PR4 prior QA is not QA for PR5.
+## Regression reference
+Run from repo root on existing Node: `node reference/learning-regression.js` (no dependency install). If Node unavailable, NOT_RUN; do not install. Verify final candidate and exact blob first. Historical rev.1: 22 author checks executed in Code Mode V8 using exact function bodies serialized into reference file and readback verified. No Node CLI invocation, no upstream package execution, not independent QA. Test 22 is a negative capability demonstration: bad trusted review can leak, not proof of security. Actual authorization/content review required; no real data, no API. Strict compact JSON only; whitespace and duplicate keys rejected by roundtrip; schema is small synthetic model, not canonical task envelope.
+| ID | Expected | Author observed |
+|---|---|---|
+| LR01 valid equality | Check predicate true per fixture | PASS |
+| LR02 valid inequality | Check predicate true per fixture | PASS |
+| LR03 malformed positive | Check predicate true per fixture | PASS |
+| LR04 malformed negative | Check predicate true per fixture | PASS |
+| LR05 missing required negative | Check predicate true per fixture | PASS |
+| LR06 wrong type | Check predicate true per fixture | PASS |
+| LR07 unknown field | Check predicate true per fixture | PASS |
+| LR08 duplicate key | Check predicate true per fixture | PASS |
+| LR09 invalid status | Check predicate true per fixture | PASS |
+| LR10 blank blocker | Check predicate true per fixture | PASS |
+| LR11 bad SHA | Check predicate true per fixture | PASS |
+| LR12 reviewed projection | Check predicate true per fixture | PASS |
+| LR13 unreviewed | Check predicate true per fixture | PASS |
+| LR14 denied ACL | Check predicate true per fixture | PASS |
+| LR15 stale source | Check predicate true per fixture | PASS |
+| LR16 wrong recipient | Check predicate true per fixture | PASS |
+| LR17 plain-text tampering | Check predicate true per fixture | PASS |
+| LR18 nested or tool item | Check predicate true per fixture | PASS |
+| LR19 preserve blocker and gate | Check predicate true per fixture | PASS |
+| LR20 changed SHA | Check predicate true per fixture | PASS |
+| LR21 missing context | Check predicate true per fixture | PASS |
+| LR22 limitation: trusted review must actually sanitize | Show bad reviewed projection not detected | PASS |
+## QA requirements (rev.1 historical criteria; rev.2 independent re-test pending)
+1. Inspect scope/diff, 25 distinct source entries, corrected V01/V03 and V02/V04 distinctions, all 60 PTS values from v0.3, three historical + two upstream lessons + one QA finding (rev.2), exact pin and source receipt. Confirm no overstatement of reported 7/7 and 5/5 upstream tests. Check no secrets/raw private media, license/rights or runtime claims; original audio, provenance, advisories/dependency review remain HOLD.
+2. Run exact blob with existing local runtime, independently add edge cases: malformed, duplicate, required/type/status, stale/denied/wrong recipient, text and nested canary, lost blocker/final gate; distinguish tested projection contract from actual ACL/redaction enforcement. Check equality before inverse and no acceptance on invalid input. Check LR22 limitations. No actual real-secret tests.
+3. Review full manual handoff template (not just reference subset): scope/rights, approval, version, time, identity, separate states, evidence, blockers, next, quota/expense and mandatory Core reads survive; verified rights/content review before forwarding. Any ambiguity stops or safe authorized read. No raw logs/history/attachment forwarding. Test paired synthetic task continuity; token measurements not available => NOT_RUN, byte/tool counts only if actually measured, never convert to token savings.
+4. Audit EVO01–10 (expected/observed, actor, UTC, source SHA, evidence, PASS/FAIL/NOT_RUN), regression of existing Core boundaries, no new workflow/install/Graphify/Level C. Prior D/E synthetic reference unchanged; rerun if QA determines affected. QA report DESIGN_READY_FOR_FINAL or HOLD at exact SHA. Final gate Claude then owner separate release; preserve snapshot provenance and ACL. No implementation of additional modules.
+
+## QA-LEARN-001 rev.2 — EVO06/EVO10 repair
+Prior QA #7210837800: 8/8 blobs, 22/22 LR, QE01–QE07 7/7; QE08 expected BLOCKED, observed REVIEWED_PROJECTION; EVO06 FAIL high, EVO10 FAIL medium. Author repair at previous HEAD 683a06f09c85da33a5d21ca2d2260fc9aa6fa3b7; 40/40 predicates executed in Code Mode V8 on the exact authored function bodies (22 prior cases with fixture updated, 18 new). No external dependency/API. Independent QA on rev.2 NOT_RUN.
+| Case | Expected | Author observed |
+|---|---|---|
+| LR23 old pair same SHA/current revision advanced | BLOCKED | PASS |
+| LR24 new revision independently approved | Allow reviewed new revision | PASS |
+| LR25 current task mismatch | BLOCKED | PASS |
+| LR26 approval recipient mismatch | BLOCKED | PASS |
+| LR27 actual destination mismatch | BLOCKED | PASS |
+| LR28 actual scope mismatch | BLOCKED | PASS |
+| LR29 approval ID superseded same revision | BLOCKED | PASS |
+| LR30 approval revoked | BLOCKED | PASS |
+| LR31 evidence superseded | BLOCKED | PASS |
+| LR32 evidence ID replaced same SHA | BLOCKED | PASS |
+| LR33 submitted/reviewed changed but approval unchanged | BLOCKED | PASS |
+| LR34 approval absent | BLOCKED | PASS |
+| LR35 current state unverified | BLOCKED | PASS |
+| LR36 rollback reuses old revision | BLOCKED | PASS |
+| LR37 old approval scope mismatch | BLOCKED | PASS |
+| LR38 current source revoked | BLOCKED | PASS |
+| LR39 missing current record | BLOCKED | PASS |
+| LR40 stale trusted record falsely marked current | Demonstrate limitation: still accepts if trusted current record falsely marked current | PASS |
+LR22 and LR40 are limitation demonstrations, not security passes. Reference current/approval/destination inputs are synthetic, not a real ledger or ACL; do not infer actual revocation, redaction, identity, or concurrency. Independent QA re-run exact current blob using existing Node and adapt QE fixtures to independently supplied current record; preserve original negative predicates, specifically reproduce QE08 with same SHA and advanced revision. Verify manual authority record, approval binding to exact projection and recipient/scope, supersession/revocation and dependency invalidation, rollback with new revision, stop on missing authority; audit full template and EVO06/EVO10; retain EVO01–10 and all previous required gates. Revalidate unchanged evidence by SHA and record limits. QA may inspect CSV v0.3 supplied privately by owner, SHA256 1a6f18409de2cbdd78fab2aee6d99dc41debb84f9f9f41e2570aeced9fc6dd9e; Director compared all 60 values to current register, all matched; QA independent PTS comparison remains NOT_RUN until received. No media files copied to repo. Source speech/provenance, runtime, real ACL, token savings and upstream full acceptance remain HOLD/NOT_RUN. No merge or release.
+
+## QA-LEARN-001 rev.3 — reuse policy / closure scope
+Owner authorizes one-source-one-owner and role-based reuse, stop duplicate research and pause expansion. No reference code change since rev.2; same reference blob ef7ea87b450346ea9c0de082c12aa1ae7c74b739. Author 40/40 from rev.2, not a new run or independent QA. Prior HOLD remains until QA independently checks current exact candidate; EVO06/EVO10 fixes and LR01–40/QE08 remain mandatory; no bypass of QA/Claude/Owner.
+QA verify delta to rev.2 and reuse unchanged evidence only where independently assessed unaffected. Check policy cases against exact text: (A) existing verified scoped record reused, no duplicate source study; (B) PARTIAL_READ/unverified claims not elevated and missing safety-critical evidence blocks dependent decision; (C) stale/revoked/changed scope or concrete discrepancy triggers targeted source check and dependent revalidation, no old approval reuse; (D) mandatory Core reads, actual permission checks, independent technical tests and final gate preserved; (E) role index links to existing IDs, no new module or unsupported installation. Record expected/observed and evidence, PASS/FAIL/NOT_RUN. These are static review cases, no software/test runtime added. Retain earlier criteria; "inspect all 60 PTS" means check register structure and available independent evidence, CSV direct comparison NOT_RUN if unavailable; do not reopen 10 videos, re-watch 60 frames, re-research upstream or treat unavailable speech/full provenance as complete. QA may request narrowly necessary source evidence where a specific finding materially affects the release; unresolved material safety/quality issues still HOLD. Full-source/third-party integration review remains HOLD separately; only bounded manual-B method/design is under review. No automatic dispatch; pause Graphify/research expansion; proceed to KHBD only after final gates and owner release decision.
+
