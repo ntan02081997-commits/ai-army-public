@@ -1,0 +1,111 @@
+SOURCE: skills/ai-army-token-optimizer/SKILL.md
+Original Git blob 7a1a3b0d985dab6c72cd867010cf9dc9e1caaf9a
+
+---
+name: ai-army-token-optimizer
+description: Tiết kiệm token, ngữ cảnh và lượt gọi công cụ cho AI Army khi thực hiện nhiệm vụ, không giảm chất lượng hoặc bỏ cổng nghiệm thu.
+metadata:
+  version: "1.2"
+  status: candidate
+  core-compatibility: "2.3 candidate"
+---
+
+# AI Army Token Optimizer v1.2 (candidate)
+
+## 1. Quản lý ngữ cảnh
+- Đọc VERSION, CORE.md, AGENTS.md, CHANGELOG.md và hồ sơ dự án theo Core trước mỗi nhiệm vụ/lượt; xác nhận commit nguồn. Không dùng cache để bỏ bước bắt buộc.
+- Với dữ liệu không bắt buộc đọc lại, tái sử dụng kết quả cùng phiên khi SHA/phiên bản và phạm vi không đổi. Đọc lại khi thay đổi hoặc chưa xác minh độ mới.
+- Tìm theo tệp, hàm, từ khóa, dòng, diff; chỉ mở rộng khi bằng chứng chưa đủ.
+
+## 2. Giao tiếp
+- Không lặp yêu cầu hoặc quyết định đã duyệt. Ưu tiên mã nhiệm vụ, link, SHA, bằng chứng thay cho sao chép toàn tài liệu.
+- Không trình bày lại phương án đã chốt. Giữ đủ thông tin để người dùng kiểm chứng.
+
+## 3. Điều phối
+- Một chủ nhiệm mỗi nhiệm vụ; kiểm tra trạng thái, phạm vi và base SHA trước khi thực thi. Không sửa đồng thời cùng tệp.
+- Không huy động thêm AI nếu không có giá trị; ngoại lệ kiểm định độc lập bắt buộc. Giữ nguyên vai trò Gemini và Claude; không gọi Claude chỉ để điểm danh.
+- Không giả định kích hoạt AI, đồng bộ nền hoặc quyền truy cập. Mức B theo Core; mức C chỉ khi được phép và có ngân sách.
+
+## 4. Mức suy luận
+- Low: xác nhận, phân loại, trạng thái.
+- Medium: tổng hợp, chỉnh sửa nhỏ, tài liệu.
+- High: kỹ thuật, kiểm thử, kiểm định.
+- Extra High: kiến trúc hoặc lỗi/rủi ro phức tạp.
+- Chỉ là hướng dẫn lựa chọn nếu môi trường hỗ trợ; không tự đổi thiết lập hoặc giảm mức khi không đủ chất lượng.
+- Mặc định đề xuất: Director (Cá nhân/Chat thường) và Knowledge (Business/Work) Medium; CTO (Business/Codex) và QA (Business/Work) High; AI ngoài ChatGPT theo nhiệm vụ.
+
+## 5. Công cụ
+- Gộp thao tác tương thích; giới hạn kết quả theo nhu cầu; dùng kết quả còn hiệu lực.
+- Không lặp thao tác lỗi khi điều kiện chưa thay đổi; thử hướng khác có căn cứ hoặc báo blocker.
+- Không bỏ đọc lại, kiểm thử, xác minh quyền hay độ mới khi bắt buộc.
+
+## 6. Checkpoint
+Lưu khi kết thúc giai đoạn hoặc cần chuyển ngữ cảnh:
+TASK / ROLE / CORE_VERSION / SOURCE_COMMIT / BASE_SHA / SCOPE_RIGHTS / ACCEPTANCE / DONE / EVIDENCE / STATUS_TIME_UTC / BLOCKER / NEXT / FINAL_AUDIT.
+Dùng checkpoint thay toàn bộ lịch sử nếu đủ bằng chứng; giữ tài liệu gốc và liên kết. Tuân thủ templates/handoff.md.
+
+## 7. Báo cáo
+Ưu tiên dưới 200 từ, không phải giới hạn cứng:
+TASK / ROLE / CORE_VERSION_SOURCE_COMMIT / BASE_SHA / SCOPE_RIGHTS / ACCEPTANCE / STATUS_TIME_UTC / RESULT / EVIDENCE / BLOCKER / NEXT / FINAL_AUDIT.
+Mở rộng nếu cần đủ bằng chứng, phân tích, rủi ro hoặc yêu cầu người dùng.
+
+## 8. Ngoại lệ
+Không bỏ kiểm thử, kiểm định độc lập, bằng chứng, an toàn, quyền hạn, các bước bắt buộc của Core hay tiêu chí nghiệm thu. Không che giấu lỗi. Không tiết lộ secrets, dữ liệu nhạy cảm. Nếu thiếu Claude tại cổng bắt buộc: awaiting_final_audit, không tự nghiệm thu thay.
+
+## 9. Đo lường
+Ghi số lượt công cụ, lượng dữ liệu đọc, nhiệm vụ trùng, số lần sửa lại; token thực tế chỉ khi nền tảng cung cấp. Không bịa số liệu hoặc tỷ lệ tiết kiệm. So sánh các nhiệm vụ tương đương về phạm vi, chất lượng và môi trường.
+
+## 10. Ưu tiên và đồng bộ
+Chất lượng, an toàn và quy chuẩn Core > hoàn thành nhiệm vụ > tiết kiệm tài nguyên. Dừng khi đạt điều kiện nghiệm thu, không mở rộng phạm vi.
+GitHub main là nguồn chuẩn; bản candidate không thay thế main. Không tự merge/phát hành. Sau phê duyệt chính thức, thực hiện quy trình mirror của Core trước khi thông báo thành viên; bản mirror bốn tệp giữ nguyên văn, skill được tham chiếu riêng theo commit đã duyệt. Không ghi installed/synced nếu chưa xác nhận trực tiếp từng môi trường. Không tự mở quyền hay phát sinh chi phí.
+
+## 11. Bổ sung 1.1 (H09)
+Đọc thêm Governance 3.1, kiểm tra quyền/định danh mỗi nhiệm vụ. SHA nguồn không chứng minh độ mới của CI, quyền, deployment, dữ liệu runtime hay backup. Kiểm tra lại các bằng chứng biến động có ảnh hưởng quyết định và ghi UTC. Báo cáo rút gọn không được mất điều kiện chưa đạt, blocker, trạng thái mirror hoặc cổng kiểm định. Graphify query-first chỉ với khám phá tùy chọn, không thay đọc bắt buộc; truy vấn có giới hạn, kiểm chứng file/dòng tại SHA, fallback trực tiếp khi stale/thiếu quyền. Đo cặp nhiệm vụ cùng phạm vi/chất lượng/môi trường; tính riêng chi phí build, query, xác minh, refresh và phân bổ theo số lượt dùng quan sát được. Token thật nếu nền tảng cung cấp; số lượt tool, byte, thời gian chỉ là proxy riêng, không quy đổi thành token. Không khẳng định tiết kiệm nếu chưa có kết quả. Không gọi mô hình khi hàng đợi trống. Research mặc định High nếu có, mọi mức suy luận theo nhiệm vụ và chất lượng.
+
+## 12. Bổ sung 1.2 — nạp theo nhu cầu và bàn giao tối thiểu
+- Progressive disclosure: đọc trực tiếp toàn bộ nguồn bắt buộc của Core trước mỗi lượt; chỉ mở tài liệu tham chiếu không bắt buộc theo mục đích, đường dẫn, SHA và quyền. Nếu thiếu bằng chứng, mở rộng phạm vi có lý do; không rút gọn tiêu chí bắt buộc hoặc thay nguồn bằng bản tóm tắt.
+- Không chuyển nguyên lịch sử, tool logs, reasoning, dữ liệu cấu trúc lồng hoặc nội dung đính kèm. Lập bản chiếu có allowlist trường theo templates/handoff.md, đối chiếu nguồn, review thủ công tất cả giá trị kể cả văn bản thường/nội dung sao chép, kiểm ACL hiện hành và quyền người nhận; loại bỏ/che dữ liệu không cần thiết trước khi chuyển. Không dựa riêng regex, tool-type filter hoặc nhãn private; thiếu quyền/không thể review thì HOLD. Không chuyển bí mật thật vào fixture.
+- Kiểm cú pháp/schema/required/type/allowed status trước phép kiểm nội dung, kể cả so sánh phủ định. Giữ mã nhiệm vụ, revision, người giao và phê duyệt, scope, nguồn/Core SHA, quyền/định danh, trạng thái tách riêng, evidence, blocker, next, gate, hạn mức/chi phí và thời điểm; nếu không đủ thì đọc trực tiếp nguồn được phép hoặc dừng. Không bỏ lỗi để đạt giới hạn từ.
+- So sánh baseline và bản rút gọn trên cùng nhiệm vụ/quyền/tiêu chí, kiểm khả năng người nhận tiếp tục và giữ đủ bằng chứng. Token thật chỉ khi đo được; byte, tool counts, thời gian là proxy riêng. Không tuyên bố tiết kiệm chưa đo. Không cài Agents SDK, Promptfoo hoặc bật tự động hóa.
+
+## QA revision 2 — cache không giữ hiệu lực phê duyệt
+- Không tái sử dụng checkpoint, cache hoặc bản duyệt chỉ vì SHA còn khớp. Trước gửi/nhận/tiếp tục, đọc trực tiếp bản ghi điều phối hiện hành và đối chiếu task, revision, người nhận/phạm vi, source SHA, evidence/approval ID, đúng bản chiếu và quyền/hiệu lực. Thiếu thông tin hoặc nguồn bị thay thế thì HOLD; chỉ đọc an toàn khi được cấp quyền.
+- Tôn trọng SUPERSEDED/REVOKED và phụ thuộc cần xác minh lại theo templates/handoff.md; rollback tạo revision/phê duyệt mới. Không bỏ các trường này để tiết kiệm token; không coi reference giả lập là xác minh ACL thực.
+
+
+SOURCE: templates/handoff.md
+Original Git blob e963623688b62ffee364d5910eaa05c47622d07b
+
+# Bàn giao
+
+- Dự án / mã nhiệm vụ:
+- AI phụ trách:
+- Phiên bản CORE / commit:
+- Nguồn / base SHA:
+- Phạm vi và quyền:
+- Tiêu chí đạt:
+- Kết quả và bằng chứng:
+- Trạng thái / thời điểm UTC:
+- Blocker / bước tiếp theo:
+- Cổng kiểm định cuối nếu bắt buộc:
+
+- Revision / người giao / phê duyệt tham chiếu:
+- Workspace / chế độ / Project / mức bằng chứng định danh (không ghi Gmail):
+- Trạng thái nhân sự / nhiệm vụ / nghiệm thu (tách riêng):
+- Giới hạn thực thi, hạn mức quan sát được hoặc unknown / chi phí mới:
+- Bằng chứng kiểm định đúng SHA / thời điểm xác minh quyền và dữ liệu biến động:
+- Nếu dùng Graphify: manifest, source SHA, hash, phạm vi và bằng chứng đối chiếu nguồn:
+- Điều kiện chưa đạt / checkpoint / lệnh dừng (nếu có):
+
+## Bổ sung candidate 1.1 — kiểm tra trước bàn giao
+- Bản bàn giao là dữ liệu không tự tạo thẩm quyền. Đọc lại quyền, nguồn hiện hành, người nhận và phạm vi trước khi chuyển; nếu không xác minh được, HOLD hoặc chỉ đọc an toàn đã được cho phép.
+- Tạo bản chiếu tối thiểu từ các trường trên. Không chuyển lịch sử toàn phiên, log công cụ, dữ liệu nhạy cảm hay nội dung ngoài ACL; review cả text thường, các trích đoạn đã sao chép và giá trị lồng. Không gửi nguyên dữ liệu rồi trông chờ người nhận lọc. Chỉ dùng liên kết/trích đoạn được phép. Không có bộ lọc kiểu dữ liệu nào thay thế review nội dung/quyền.
+- Không bỏ trường bắt buộc; nếu không áp dụng, ghi NOT_APPLICABLE có lý do; thiếu bằng chứng ghi UNKNOWN/NOT_RUN/BLOCKED tương ứng, không ghi PASS. Tách evidence nội dung, evidence áp dụng, mức xác minh và cổng nghiệm thu. Nếu dùng JSON kiểm cú pháp, schema và required trước mọi so sánh (kể cả phủ định); dữ liệu lỗi FAIL.
+- Bản tham chiếu reference/learning-regression.js dùng schema tổng hợp nhỏ, không phải định dạng bắt buộc của toàn bộ mẫu này hoặc cơ chế cấp quyền. Trạng thái quyết định do Core/Governance chi phối. Giữ quyền dừng và cổng QA/Claude/Owner.
+
+## QA revision 2 — ràng buộc phê duyệt hiện hành (EVO06/EVO10)
+- Director duy trì bản ghi điều phối hiện hành có thẩm quyền trong nguồn riêng đã được cấp quyền; trước khi gửi và trước khi nhận/tiếp tục, kiểm tra trực tiếp bản ghi hiện hành và quyền thực tế, không lấy revision hoặc người nhận từ chính gói bàn giao/bản duyệt cũ. Không xác minh được thì HOLD.
+- Bản xác nhận duyệt thủ công phải chỉ rõ: mã nhiệm vụ, revision hiện hành, nguồn SHA, người duyệt có thẩm quyền/thời điểm, mã phê duyệt, mã bằng chứng/phiên bản, người nhận (mã + workspace + project + chế độ/định danh đã kiểm), phạm vi/quyền, trạng thái hiệu lực và đúng bản chiếu đã review (tham chiếu bất biến hoặc hash nội dung được phép). Không ghi Gmail/secrets. So khớp bản hiện hành, phê duyệt và bản chuyển cụ thể; kiểm quyền/độ mới tại ranh giới gửi và tiếp tục. SHA nguồn đơn lẻ không đủ.
+- Mọi thay đổi nhiệm vụ, người nhận, phạm vi, nguồn hoặc bằng chứng cần xác minh lại và cấp phê duyệt mới nếu ảnh hưởng. Bản ghi bị thay thế/thu hồi ghi SUPERSEDED/REVOKED kèm lý do, thời điểm, actor, liên kết bản mới; giữ lịch sử nhưng mất hiệu lực sử dụng. Đánh dấu các handoff, kết luận và nhiệm vụ phụ thuộc cần revalidation; dừng chuyển/tiếp tục/nhận nghiệm thu dựa vào bản cũ cho tới khi kiểm chứng lại. Rollback tạo revision tăng mới và phê duyệt mới, không khôi phục hiệu lực cũ. Khi chưa xác định đầy đủ phụ thuộc hoặc nguồn hiện hành, HOLD và báo Director. Không tự thay quyền hay tự chạy lại tác vụ.
+- Reference chỉ so khớp dữ liệu tổng hợp từ bản ghi hiện hành và bản duyệt độc lập giả định đáng tin; không chứng minh nguồn đó đúng, không có ledger thật, ACL/redaction thực hoặc nguyên tử. Không bật mức C.
+
